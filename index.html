@@ -8,22 +8,31 @@
   <body>
 
   <div id="app">
-    <input type="text" v-on:input="changeTitle">
-    <p>{{title}}</p>
+    <!-- <input type="text" v-on:input="changeTitle"> -->
+    <!-- cannot use curly braces in html attribute -->
+    <h1 v-once>{{ title}}</h1>
+    <p>{{ sayHello()}} - <a v-bind:href="link">Google</a></p>
+    <p v-html= "finishedLink"></p>
   </div>
-  
+
   <script>
+  //by creating a new instance you create a connection with html code.
+  // have access to everything stored in methods just by typing title.
     new Vue({
       el: '#app',
       data: {
-      title: 'hello world!'
-      },
-      methods:{
-      changeTitle: function(event) {
-      this.title = event.target.value;
-        }
-      }
-});
+      title: 'hello world!',
+      link: 'http://google.com',
+      finishedLink: '<a href="http://google.com">Google</a>'
+  },
+  //methods
+  methods: {
+    sayHello: function(){
+    this.title = 'Hello!';
+    return this.title;
+    }
+  }
+  });
   </script>
   </body>
 </html>
