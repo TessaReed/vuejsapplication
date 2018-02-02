@@ -11,6 +11,8 @@
     <!-- button -->
     <button v-on:click="increase">Click me</button>
     <p> {{counter}} </p>
+    <p>Coordinates: {{x}} / {{y}} </p>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{x}} /{{y}} </p>
     <!-- <input type="text" v-on:input="changeTitle"> -->
     <!-- cannot use curly braces in html attribute -->
     <h1 v-once>{{ title }} </h1>
@@ -25,6 +27,8 @@
       el: '#app',
       data: {
       counter: 0,
+      x: 0,
+      y: 0,
       title: 'hello world!',
       link: 'http://google.com',
       finishedLink: '<a href="http://google.com">Google</a>'
@@ -38,7 +42,11 @@
     {
       increase: function() {
       this.counter++;
-    }
+    },
+      updateCoordinates: function(event){
+        this.x = event.clientX;
+        this.y = event.clientY;
+      }
   }
   });
   </script>
