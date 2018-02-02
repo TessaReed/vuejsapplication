@@ -8,10 +8,13 @@
   <body>
 
   <div id="app">
+    <!-- button -->
+    <button v-on:click="increase">Click me</button>
+    <p> {{counter}} </p>
     <!-- <input type="text" v-on:input="changeTitle"> -->
     <!-- cannot use curly braces in html attribute -->
-    <h1 v-once>{{ title}}</h1>
-    <p>{{ sayHello()}} - <a v-bind:href="link">Google</a></p>
+    <h1 v-once>{{ title }} </h1>
+    <!-- <p>{{ sayHello()}} - <a v-bind:href="link">Google</a></p> -->
     <p v-html= "finishedLink"></p>
   </div>
 
@@ -21,15 +24,20 @@
     new Vue({
       el: '#app',
       data: {
+      counter: 0,
       title: 'hello world!',
       link: 'http://google.com',
       finishedLink: '<a href="http://google.com">Google</a>'
   },
-  //methods
-  methods: {
-    sayHello: function(){
-    this.title = 'Hello!';
-    return this.title;
+  methods:
+  // methods: {
+  //   sayHello: function(){
+  //   this.title = 'Hello!';
+  //   return this.title;
+  //   }
+    {
+      increase: function() {
+      this.counter++;
     }
   }
   });
