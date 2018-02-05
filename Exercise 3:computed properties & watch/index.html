@@ -23,18 +23,24 @@
     </div>
 </div>
 
+
 <script>
   new Vue({
         el: '#exercise',
         data: {
             value: 0
         },
-
+        // look up computed properties
+        computed: {
+          result: function(){
+          return this.value == 37 ? 'done' : 'not there yet';
+          }
+        },
         watch: {
-          counter: function(value) {
+          result: function() {
             var vm = this;
             setTimeout(function(){
-              vm.result = 0;
+              vm.value = 0;
             }, 5000);
           },
         },
