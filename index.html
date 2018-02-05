@@ -15,7 +15,8 @@
     <p v-on:mousemove="updateCoordinates">
     Coordinates: {{x}} /{{y}}
     - <span v-on:mousemove.stop="">DEAD SPOT</span> </p>
-    <input type="text" v-on:keyup.enter="alertMe">
+    <!-- key modifier - look at list of available modifiers -->
+    <input type="text" v-on:keyup.enter.space="alertMe">
     <!-- <input type="text" v-on:input="changeTitle"> -->
     <!-- cannot use curly braces in html attribute -->
     <h1 v-once>{{ title }} </h1>
