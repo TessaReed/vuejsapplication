@@ -9,8 +9,11 @@
 
   <div id="app">
     <!-- button -->
-    <button v-on:click="increase(2, $event)">Click me</button>
-    <p> {{counter}} </p>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <p> Counter: {{ counter }} </p>
+    <p> Result: {{ result() }} </p>
+    <p> {{counter * 2 > 10? 'Greater than 10':'Smaller than 10'}} </p>
     <p>Coordinates: {{x}} / {{y}} </p>
     <p v-on:mousemove="updateCoordinates">
     Coordinates: {{x}} /{{y}}
@@ -22,6 +25,9 @@
     <h1 v-once>{{ title }} </h1>
     <!-- <p>{{ sayHello()}} - <a v-bind:href="link">Google</a></p> -->
     <p v-html= "finishedLink"></p>
+<!-- two way binding -->
+    <input type="text" v-model="name">{{name}}</input>
+
   </div>
 
   <script>
@@ -30,6 +36,7 @@
     new Vue({
       el: '#app',
       data: {
+      name: 'Tessa',
       counter: 0,
       x: 0,
       y: 0,
@@ -37,24 +44,40 @@
       link: 'http://google.com',
       finishedLink: '<a href="http://google.com">Google</a>'
   },
+  computed: {
+    output: function(){
+      return this.counter > 5 ? 'Greater 5' : 'Smaller than 5';
+    }
+  },
+  watch: {
+    counter: function(value) {
+      var vm = this;
+      setTimeout(function(){
+        vm.counter = 0;
+      }, 2000);
+    }
+  },
   methods:
   // methods: {
   //   sayHello: function(){
   //   this.title = 'Hello!';
-  //   return this.title;
+  //   return this.title
   //   }
-    {
+  {
+    result: function() {
+      return this.counter > 5 ? 'Greater 5' : 'Smaller than 5'
+    },
       increase: function(step, event) {
       this.counter+= step;
     },
       updateCoordinates: function(event){
         this.x = event.clientX;
         this.y = event.clientY;
-      },
-    dummy: function(event){
+    },
+      dummy: function(event){
       event.stopPropogation();
     },
-    alertMe: function(){
+      alertMe: function(){
       alert('alert!');
     }
   }
