@@ -1,0 +1,38 @@
+.red {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin: 10px;
+  background-color: red;
+  width: 200px;
+}
+
+.green {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin: 10px;
+  background-color: green;
+  width: 200px;
+}
+
+.blue {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin: 10px;
+  background-color: blue;
+  width: 200px;
+}
+
+div {
+    display: block;
+}
+
+.demo {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  display: inline-block;
+  margin: 10px;
+}
