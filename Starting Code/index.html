@@ -1,0 +1,57 @@
+
+<!-- Put this in the HTML section in JSFiddle! -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="vue.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<div id="app">
+			<p v-if="show">You can see me!</p>
+			<p v-else>Do you also see me?</p>
+			<p> last you see me! </p>
+			<template v-if="show">
+				<h1>Heading</h1>
+				<p> Inside a template </p>
+			</template>
+			<button @click="show = !show">Switch</button>
+			<!-- setting names and index number -->
+			<!-- behind the scenes the key will remember the ingredient, this helps vue remember which is which -->
+			<ul>
+				<li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+			</ul>
+
+			<!-- push method adds item to existing array, array itself doesnt change -->
+			<!-- add a unique key by using :key -->
+			<button @click="ingredients.push('spices')">Add New</button>
+			<hr>
+				<ul>
+<!-- nested for loop -->
+<!-- looping through objects -->
+					<li v-for="person in persons">
+						<!-- first one will always be value & second key name -->
+						<div v-for="(value, key, index) in person">{{ key }}: {{ value }} {{index}}</div>
+					</li>
+				</ul>
+<!-- looping through numbers -->
+<!-- the for loop -->
+				<span v-for="n in 10"> {{ n }}</span>
+
+	</body>
+</html>
+		<script>
+				new Vue({
+					el: '#app',
+					data: {
+						show: true,
+						ingredients: ['meat','fruit','cookies'],
+						persons: [
+							{name: 'Max', age: 27, color: 'red'},
+							{name: 'Anna', age: 'unknown', color: 'blue'}
+						]
+					}
+				})
+		</script>
